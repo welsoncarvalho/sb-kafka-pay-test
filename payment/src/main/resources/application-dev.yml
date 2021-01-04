@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/pay_test
+    username: u_pay
+    password: p_pay
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 5
+      idle-timeout: 300000
+
+  jpa:
+    generate-ddl: false
+    database: MYSQL
+    show-sql: true
+    data-platform: org.hibernate.dialect.MySQL5Dialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+kafka:
+  bootstrapAddress: localhost:9192, localhost:9292
+  topic:
+    payment: tpc-payment-create
+    account-status: tpc-account-status
